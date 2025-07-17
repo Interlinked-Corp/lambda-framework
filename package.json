@@ -1,0 +1,24 @@
+{
+  "name": "lambda-framework",
+  "version": "1.0.0",
+  "description": "Base framework for AWS Lambda functions using Serverless Framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Interlinked-Corp/lambda-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Interlinked-Corp/lambda-framework/issues"
+  },
+  "homepage": "https://github.com/Interlinked-Corp/lambda-framework#readme",
+  "devDependencies": {
+    "serverless": "^4.17.1"
+  }
+}
