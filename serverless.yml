@@ -1,16 +1,42 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: keithdejervis
 # "service" is the name of this project. This will also be added to your AWS resource names.
-service: mvt-tiles
+service: lambda-framework
 
 provider:
   name: aws
-  runtime: nodejs20.x
+  runtime: python3.11
+
+package:
+  individually: true  # Each Lambda is packaged separately
 
 functions:
-  hello:
-    handler: handler.hello
+  mvt:
+    handler: services/mvt/handler.handler
+    package:
+      include:
+        - services/mvt/**
     events:
-      - httpApi:
-          path: /
+      - http:
+          path: api/mvt
           method: get
+
+  transcribe:
+    handler: services/transcribe/handler.transcribe_task
+    package:
+      include:
+        - services/transcribe/**
+    events:
+      - http:
+          path: api/transcribe
+          method: post
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
+    layer: false

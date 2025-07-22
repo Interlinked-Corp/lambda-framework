@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/Interlinked-Corp/lambda-framework#readme",
   "devDependencies": {
-    "serverless": "^4.17.1"
+    "serverless": "^4.17.1",
+    "serverless-offline": "^14.4.0",
+    "serverless-python-requirements": "^6.1.2"
   }
 }
