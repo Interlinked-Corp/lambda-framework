@@ -1,11 +1,14 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: interlinkedcorp
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: lambdas
 # "service" is the name of this project. This will also be added to your AWS resource names.
 service: lambda-framework
 
 provider:
   name: aws
   runtime: python3.11
+  region: us-east-2
 
 package:
   individually: true  # Each Lambda is packaged separately
@@ -20,9 +23,11 @@ functions:
       - http:
           path: api/mvt
           method: get
+          cors: true   
       - http:
           path: api/
           method: get
+          cors: true
 
   transcribe:
     handler: services/transcribe/handler.transcribe_task
@@ -33,6 +38,7 @@ functions:
       - http:
           path: api/transcribe
           method: post
+          cors: true
 
 plugins:
   - serverless-python-requirements
