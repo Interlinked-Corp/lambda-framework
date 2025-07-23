@@ -14,6 +14,9 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
 )
+@app.get("/api")  
+def root():
+    return {"message": "Welcome to the MVT API"}
 
 @app.get("/api/mvt")
 def get_mvt(

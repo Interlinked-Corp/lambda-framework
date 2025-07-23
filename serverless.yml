@@ -1,5 +1,5 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
-org: keithdejervis
+org: interlinkedcorp
 # "service" is the name of this project. This will also be added to your AWS resource names.
 service: lambda-framework
 
@@ -19,6 +19,9 @@ functions:
     events:
       - http:
           path: api/mvt
+          method: get
+      - http:
+          path: api/
           method: get
 
   transcribe:
