@@ -1,5 +1,6 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: interlinkedcorp
+<<<<<<< HEAD
 # "app" enables Serverless Framework Dashboard features and sharing them with other Services.
 app: lambdas
 # "service" is the name of this project. This will also be added to your AWS resource names.
@@ -60,6 +61,13 @@ functions:
           path: api/transcribe
           method: post
           cors: true
+
+  sample:
+    handler: services/sample/handler.sum
+    events:
+      - http:
+          path: add
+          method: post
 
 plugins:
   - serverless-python-requirements
