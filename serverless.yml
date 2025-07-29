@@ -9,6 +9,22 @@ provider:
   name: aws
   runtime: python3.11
   region: us-east-2
+  apiGateway:
+    binaryMediaTypes:
+      - 'application/vnd.mapbox-vector-tile'
+      - 'application/octet-stream'
+      - 'application/x-protobuf'
+      - 'application/zip'
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:ListBucket
+          Resource: 
+            - "arn:aws:s3:::mvt-tile-bucket/*"
 
 package:
   individually: true  # Each Lambda is packaged separately
@@ -28,6 +44,11 @@ functions:
           path: api/
           method: get
           cors: true
+      - httpApi:
+          method: GET
+          path: /mvt
+    url: true  # Enable Lambda Function URL
+
 
   transcribe:
     handler: services/transcribe/handler.transcribe_task
